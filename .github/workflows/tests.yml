@@ -93,7 +93,7 @@ jobs:
 
       - name: Upload coverage data
         if: always() && matrix.session == 'tests'
-        uses: actions/upload-artifact@v4.5.0
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: coverage-data-${{ matrix.python-version }}-${{ matrix.os }}
           path: ".coverage.*"
@@ -101,7 +101,7 @@ jobs:
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
-        uses: actions/upload-artifact@v4.5.0
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: docs
           path: docs/_build
@@ -134,7 +134,7 @@ jobs:
           nox --version
 
       - name: Download coverage data
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v4.2.1
         with:
           pattern: coverage-data-*
           merge-multiple: true
@@ -148,4 +148,4 @@ jobs:
           nox --force-color --session=coverage -- xml
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v5.1.2
+        uses: codecov/codecov-action@v5.4.0
